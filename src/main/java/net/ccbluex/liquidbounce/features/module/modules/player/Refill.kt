@@ -21,7 +21,9 @@ import net.minecraft.item.ItemStack
 import net.minecraft.network.play.client.C0EPacketClickWindow
 
 object Refill : Module("Refill", Category.PLAYER, Category.SubCategory.PLAYER_COUNTER) {
-    private val delay by int("Delay", 400, 10..1000)
+    private val instant by boolean("Instant", false)
+    
+    private val delay by int("Delay", 400, 10..1000) { !instant }
 
     private val minItemAge by int("MinItemAge", 400, 0..1000)
 
